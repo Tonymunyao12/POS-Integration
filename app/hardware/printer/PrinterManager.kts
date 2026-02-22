@@ -1,0 +1,3 @@
+interface PrinterManager{
+    fun PrintReceipt()
+}
