@@ -1,0 +1,91 @@
+DISTRIBUTED SYSTEM:
+
+POS Devices
+|
+v
+API Gateway (Authentication,Routing Request, logging) Tools: Amazon API Gateway, NGINX, Kong
+|
+v
+Load Balancer
+|
+---------------------------------
+| Auth | Payment | Merchant | POS |
+---------------------------------
+      |
+      v
+Event Streaming (Kafka)
+|
+----------------------------------
+| Ledger | Fraud | Notifications |
+----------------------------------
+      |
+      v
+Databases
+
+*****************************************************************************
+
+MODERN POS BACKEND:
+
+Mobile App
+
+    * Kotlin Android POS
+
+Backend
+
+    * Kotlin + Spring Boot
+
+Event System
+
+    * Apache Kafka
+
+Database
+
+    * PostgreSQL
+
+Cache
+
+    * Redis
+
+Infrastructure
+
+    * Amazon Web Services or Google Cloud Platform
+
+******************************************************************************
+
+COMPLETE TRANSACTIONS FLOW:
+
+
+Customer pays
+      |
+POS Android App
+      |
+API Gateway
+      |
+Payment Service
+      |
+Kafka Event
+      |
+-----------------------------------------
+| Ledger | Fraud | Notification | Sync |
+-----------------------------------------
+      |
+Database
+      |
+Receipt sent
+
+******************************************************************************
+
+COMPONENTS OF POS SERVER ARCHITECTURE:
+
+1. Client Layer - these are the devices that interact with the system. - i.e. Android POS devices, web dashboards, mobile banking apps.
+2. API Gateway - acts as the front end of the backend.
+    flow: POS Device -> API Gateway -> Backend Services
+3. Microservices Layer - its best practice to break down logic into microservices.
+        Authentication  -  Login, tokens
+        Payment Service  -  Transaction processing
+        Device Service  -  POS device management
+        Merchant Service  -  Merchant management
+        Settlement Service  -  Bank Settlement
+        Reconciliation Service  -  Transaction matching
+
+4. Payment Processing  -  it receives the transaction
